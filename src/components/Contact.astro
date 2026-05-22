@@ -1,0 +1,67 @@
+---
+---
+<!-- Seção de Contato -->
+<section id="contato" class="py-20 border-t border-custom relative z-10 transition-all-custom">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-4xl mx-auto bg-custom-surface border border-custom p-8 md:p-12 rounded-3xl shadow-xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <span class="text-xs font-black tracking-widest text-custom-accent uppercase">Inicie sua Maturação</span>
+                    <h2 class="text-3xl md:text-4xl font-black tracking-tight">
+                        Vamos estruturar seus fluxos de trabalho.
+                    </h2>
+                    <p class="text-custom-muted leading-relaxed text-sm md:text-base">
+                        Preencha o formulário para agendar uma demonstração detalhada do Axiom e discutir a modelagem de processos do seu escritório.
+                    </p>
+                    <div class="space-y-3 text-sm font-semibold">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-custom-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span class="opacity-80">contato@simmer.systems</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-custom-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span class="opacity-80">Porto Velho - Rondônia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário de Contato -->
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-custom-muted block mb-1.5">Nome do Escritório</label>
+                        <input type="text" required class="w-full px-4 py-3 bg-custom-main text-custom-main border border-custom rounded-xl text-sm focus:outline-none focus:border-custom-accent transition-all-custom placeholder:opacity-50" placeholder="Ex: Alencar & Associados">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-custom-muted block mb-1.5">E-mail Profissional</label>
+                        <input type="email" required class="w-full px-4 py-3 bg-custom-main text-custom-main border border-custom rounded-xl text-sm focus:outline-none focus:border-custom-accent transition-all-custom placeholder:opacity-50" placeholder="Ex: contato@alencar.adv.br">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-custom-muted block mb-1.5">Mensagem</label>
+                        <textarea rows="3" required class="w-full px-4 py-3 bg-custom-main text-custom-main border border-custom rounded-xl text-sm focus:outline-none focus:border-custom-accent transition-all-custom placeholder:opacity-50" placeholder="Conte-nos brevemente as suas maiores dificuldades em prazos e fluxos..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3.5 bg-custom-accent text-custom-main font-bold rounded-xl text-sm transition-all-custom hover:opacity-90 cursor-pointer">
+                        Enviar Pedido
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const setupContactForm = () => {
+        const form = document.getElementById('contact-form') as HTMLFormElement;
+        if (!form) return;
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            (window as any).showToast?.('Pedido enviado com sucesso! Entraremos em contacto.');
+            form.reset();
+        });
+    };
+
+    // Run setup on load
+    setupContactForm();
+    // Re-bind when swapping Astro routes (preserves listeners)
+    document.addEventListener('astro:after-swap', setupContactForm);
+</script>

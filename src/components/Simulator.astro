@@ -1,0 +1,247 @@
+---
+---
+<!-- Seção do Simulador Interativo (Axiom Sandbox) -->
+<section id="simulador" class="py-20 border-t border-custom bg-custom-surface/50 relative z-10 transition-all-custom">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-black tracking-widest text-custom-accent uppercase">Mãos à Obra</span>
+            <h2 class="text-3xl md:text-5xl font-black tracking-tight mt-2">
+                Simulador de Transição de Estados
+            </h2>
+            <p class="text-custom-muted mt-4 text-sm md:text-base">
+                Experimente o rigor técnico do motor Axiom. Tente processar um caso administrativo do e-CAC até à homologação. Veja como a integridade dos dados impede erros e inconsistências de forma automática.
+            </p>
+        </div>
+
+        <!-- Sandbox Interface -->
+        <div class="bg-custom-main border border-custom rounded-3xl overflow-hidden shadow-2xl max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12">
+            
+            <!-- Coluna de Controle (Painel de Ações) -->
+            <div class="md:col-span-5 p-6 border-b md:border-b-0 md:border-r border-custom flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-custom-main">Ações Disponíveis</h3>
+                    <div class="space-y-3">
+                        <button id="btn-anexar-doc" class="w-full py-3 px-4 rounded-xl border border-custom bg-custom-card text-left text-sm font-semibold hover:border-custom-accent hover:bg-custom-main transition-all-custom flex items-center justify-between text-custom-main cursor-pointer">
+                            <span>1. Anexar Contrato & Docs</span>
+                            <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                        </button>
+                        <button id="btn-vincular-ecac" class="w-full py-3 px-4 rounded-xl border border-custom bg-custom-card text-left text-sm font-semibold hover:border-custom-accent hover:bg-custom-main transition-all-custom flex items-center justify-between text-custom-main cursor-pointer">
+                            <span>2. Autenticar e-CAC</span>
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        </button>
+                        <button id="btn-analisar-credito" class="w-full py-3 px-4 rounded-xl border border-custom bg-custom-card text-left text-sm font-semibold hover:border-custom-accent hover:bg-custom-main transition-all-custom flex items-center justify-between text-custom-main cursor-pointer">
+                            <span>3. Calcular Homologação</span>
+                            <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                        </button>
+                        <button id="btn-finalizar-processo" class="w-full py-3 px-4 rounded-xl border border-custom bg-custom-card text-left text-sm font-semibold hover:border-custom-accent hover:bg-custom-main transition-all-custom flex items-center justify-between text-custom-main cursor-pointer">
+                            <span>4. Encerramento & Êxito</span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t border-custom">
+                    <button id="btn-reiniciar" class="w-full py-2.5 px-4 rounded-lg border border-custom bg-custom-card text-custom-main font-bold text-xs uppercase tracking-wider hover:bg-custom-surface transition-all-custom cursor-pointer">
+                        Reiniciar Fluxo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Coluna de Visualização (Status e Output) -->
+            <div class="md:col-span-7 p-6 md:p-8 flex flex-col justify-between min-h-[380px]">
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-xs uppercase tracking-wider text-custom-muted font-bold">Visualização do Estado</span>
+                        <span id="workflow-badge" class="px-2.5 py-1 text-xs font-bold rounded-full bg-zinc-500/15 text-zinc-400">Pendente</span>
+                    </div>
+                    
+                    <!-- Representação Gráfica dos Estados -->
+                    <div class="relative flex items-center justify-between mb-8 px-4">
+                        <!-- Linha de conexão base -->
+                        <div class="absolute top-1/2 left-0 w-full h-0.5 bg-step-inactive -translate-y-1/2 z-0"></div>
+                        <div id="sim-line-progress" class="absolute top-1/2 left-0 h-0.5 bg-custom-accent -translate-y-1/2 z-0 transition-all duration-500" style="width: 0%;"></div>
+
+                        <!-- Estado 1 -->
+                        <div id="step-1" class="w-8 h-8 rounded-full bg-step-inactive border-2 border-step-inactive flex items-center justify-center text-xs font-bold z-10 transition-all duration-500 text-step-inactive">1</div>
+                        <!-- Estado 2 -->
+                        <div id="step-2" class="w-8 h-8 rounded-full bg-step-inactive border-2 border-step-inactive flex items-center justify-center text-xs font-bold z-10 transition-all duration-500 text-step-inactive">2</div>
+                        <!-- Estado 3 -->
+                        <div id="step-3" class="w-8 h-8 rounded-full bg-step-inactive border-2 border-step-inactive flex items-center justify-center text-xs font-bold z-10 transition-all duration-500 text-step-inactive">3</div>
+                        <!-- Estado 4 -->
+                        <div id="step-4" class="w-8 h-8 rounded-full bg-step-inactive border-2 border-step-inactive flex items-center justify-center text-xs font-bold z-10 transition-all duration-500 text-step-inactive">4</div>
+                    </div>
+
+                    <!-- Logs da Máquina de Estados (Terminal Box) -->
+                    <div class="bg-terminal border border-terminal p-4 rounded-xl code-font text-xs space-y-2 max-h-[160px] overflow-y-auto transition-all" id="sim-logs">
+                        <div class="text-terminal-comment">// Máquina de Estados Simmer Axiom Inicializada.</div>
+                        <div class="text-warning-custom">// Estado Atual: Novo Lead - Aguardando Documentação.</div>
+                    </div>
+                </div>
+
+                <!-- Metáfora de Validação Física (Feedback Visual Dedicado) -->
+                <div id="sim-validation-feedback" class="mt-4 p-4 rounded-xl border border-transparent transition-all-custom opacity-0 h-16 flex items-center gap-3">
+                    <span id="feedback-icon" class="flex-shrink-0"></span>
+                    <p id="feedback-text" class="text-xs font-semibold"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    let simState = 0; // 0: Lead, 1: Docs Anexados, 2: e-CAC Autenticado, 3: Calculado/Aprovado, 4: Encerrado
+
+    const initSimulator = () => {
+        const btnAnexar = document.getElementById('btn-anexar-doc');
+        const btnEcac = document.getElementById('btn-vincular-ecac');
+        const btnCalcular = document.getElementById('btn-analisar-credito');
+        const btnFinalizar = document.getElementById('btn-finalizar-processo');
+        const btnReiniciar = document.getElementById('btn-reiniciar');
+
+        const logBox = document.getElementById('sim-logs');
+        const feedbackBox = document.getElementById('sim-validation-feedback');
+        const feedbackText = document.getElementById('feedback-text');
+        const feedbackIcon = document.getElementById('feedback-icon');
+        const badge = document.getElementById('workflow-badge');
+        const progressBar = document.getElementById('sim-line-progress');
+
+        if (!btnAnexar || !btnEcac || !btnCalcular || !btnFinalizar || !btnReiniciar ||
+            !logBox || !feedbackBox || !feedbackText || !feedbackIcon || !badge || !progressBar) {
+            return;
+        }
+
+        const showFeedback = (text: string, type: 'error' | 'success' | 'info') => {
+            // Clear current states
+            feedbackBox.className = "mt-4 p-4 rounded-xl border transition-all duration-300 opacity-0 h-16 flex items-center gap-3";
+            feedbackText.innerText = text;
+
+            if (type === 'error') {
+                feedbackBox.classList.add('bg-red-500/10', 'border-red-500/30', 'text-red-400');
+                feedbackIcon.innerHTML = `<svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>`;
+            } else if (type === 'success') {
+                feedbackBox.classList.add('bg-emerald-500/10', 'border-emerald-500/30', 'text-emerald-400');
+                feedbackIcon.innerHTML = `<svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"></path></svg>`;
+            } else {
+                feedbackBox.classList.add('bg-pink-500/10', 'border-pink-500/30', 'text-pink-400');
+                feedbackIcon.innerHTML = `<svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+            }
+
+            feedbackBox.classList.replace('opacity-0', 'opacity-100');
+        };
+
+        const appendLog = (text: string, textClass: string) => {
+            const div = document.createElement('div');
+            div.className = textClass;
+            div.innerText = text;
+            logBox.appendChild(div);
+            logBox.scrollTop = logBox.scrollHeight;
+        };
+
+        const updateStepUI = (step: number, active: boolean) => {
+            const el = document.getElementById(`step-${step}`);
+            if (!el) return;
+            if (active) {
+                el.className = "w-8 h-8 rounded-full bg-custom-accent border-2 border-custom-accent flex items-center justify-center text-xs font-bold z-10 transition-all duration-500 text-white scale-110 shadow-lg shadow-pink-500/20";
+            } else {
+                el.className = "w-8 h-8 rounded-full bg-step-inactive border-2 border-step-inactive flex items-center justify-center text-xs font-bold z-10 transition-all duration-500 text-step-inactive";
+            }
+        };
+
+        const triggerSimAction = (action: string) => {
+            // Hide feedback instantly prior to computing state checks
+            feedbackBox.className = "mt-4 p-4 rounded-xl border transition-all duration-300 opacity-0 h-16 flex items-center gap-3";
+
+            setTimeout(() => {
+                if (action === 'anexar-doc') {
+                    if (simState === 0) {
+                        simState = 1;
+                        updateStepUI(1, true);
+                        progressBar.style.width = '33%';
+                        badge.innerText = 'Contrato Assinado';
+                        badge.className = "px-2.5 py-1 text-xs font-bold rounded-full bg-yellow-500/15 text-yellow-400";
+                        appendLog('// Sucesso: Contrato & Documentação enviados e verificados operational.', 'text-warning-custom');
+                        showFeedback('Documentos validados com sucesso. Próximo passo ativado.', 'success');
+                    } else {
+                        showFeedback('A etapa de documentos já foi validada com integridade.', 'info');
+                    }
+                } else if (action === 'vincular-ecac') {
+                    if (simState === 1) {
+                        simState = 2;
+                        updateStepUI(2, true);
+                        progressBar.style.width = '66%';
+                        badge.innerText = 'e-CAC Ativo';
+                        badge.className = "px-2.5 py-1 text-xs font-bold rounded-full bg-blue-500/15 text-blue-400";
+                        appendLog('// Sucesso: Token e-CAC validado via certificado operacional.', 'text-info-custom');
+                        showFeedback('Autenticação segura estabelecida no e-CAC.', 'success');
+                    } else if (simState < 1) {
+                        showFeedback('Bloqueio de Regra: Assine o contrato e anexe os documentos primeiro.', 'error');
+                        appendLog('[ERRO DE REGRA] Tentativa de aceder ao e-CAC sem assinatura de contrato.', 'text-error-custom');
+                    } else {
+                        showFeedback('O acesso ao e-CAC já está consolidado.', 'info');
+                    }
+                } else if (action === 'analisar-credito') {
+                    if (simState === 2) {
+                        simState = 3;
+                        updateStepUI(3, true);
+                        progressBar.style.width = '100%';
+                        badge.innerText = 'Cálculo Pronto';
+                        badge.className = "px-2.5 py-1 text-xs font-bold rounded-full bg-purple-500/15 text-purple-400";
+                        appendLog('// Sucesso: Folha de créditos homologada e taxa SELIC calculada.', 'text-custom-accent');
+                        showFeedback('Memória de cálculo validada e integrada no financeiro.', 'success');
+                    } else if (simState < 2) {
+                        showFeedback('Bloqueio de Regra: Autentique o e-CAC para obter os dados fiscais.', 'error');
+                        appendLog('[ERRO DE REGRA] Tentativa de calcular sem credenciais e-CAC.', 'text-error-custom');
+                    } else {
+                        showFeedback('Os créditos fiscais já foram homologados no sistema.', 'info');
+                    }
+                } else if (action === 'finalizar-processo') {
+                    if (simState === 3) {
+                        simState = 4;
+                        updateStepUI(4, true);
+                        badge.innerText = 'Encerrado com Êxito';
+                        badge.className = "px-2.5 py-1 text-xs font-bold rounded-full bg-emerald-500/15 text-emerald-400";
+                        appendLog('// Sucesso: Honorários cobrados e caso finalizado de forma imutável.', 'text-success-custom');
+                        showFeedback('Parabéns! O processo foi encerrado sem qualquer desvio ou erro.', 'success');
+                    } else if (simState < 3) {
+                        showFeedback('Bloqueio de Regra: Finalização indisponível antes da validação dos cálculos.', 'error');
+                        appendLog('[ERRO DE REGRA] Tentativa de faturar honorários de caso incompleto.', 'text-error-custom');
+                    } else {
+                        showFeedback('Este caso já se encontra encerrado e auditado com sucesso.', 'info');
+                    }
+                }
+            }, 100);
+        };
+
+        const resetSim = () => {
+            simState = 0;
+            progressBar.style.width = '0%';
+            badge.innerText = 'Pendente';
+            badge.className = "px-2.5 py-1 text-xs font-bold rounded-full bg-zinc-500/15 text-zinc-400";
+
+            for (let i = 1; i <= 4; i++) {
+                updateStepUI(i, false);
+            }
+
+            logBox.innerHTML = `
+                <div class="text-terminal-comment">// Máquina de Estados Simmer Axiom Reiniciada.</div>
+                <div class="text-warning-custom">// Estado Atual: Novo Lead - Aguardando Documentação.</div>
+            `;
+
+            feedbackBox.className = "mt-4 p-4 rounded-xl border transition-all duration-300 opacity-0 h-16 flex items-center gap-3";
+            (window as any).showToast?.('Simulador reiniciado!');
+        };
+
+        // Attach listeners
+        btnAnexar.addEventListener('click', () => triggerSimAction('anexar-doc'));
+        btnEcac.addEventListener('click', () => triggerSimAction('vincular-ecac'));
+        btnCalcular.addEventListener('click', () => triggerSimAction('analisar-credito'));
+        btnFinalizar.addEventListener('click', () => triggerSimAction('finalizar-processo'));
+        btnReiniciar.addEventListener('click', resetSim);
+    };
+
+    // Trigger initialization on boot
+    initSimulator();
+    // Re-bind when swapping Astro routes (preserves state listeners)
+    document.addEventListener('astro:after-swap', initSimulator);
+</script>

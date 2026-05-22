@@ -1,0 +1,28 @@
+---
+---
+<!-- Custom Notification Box (Toast) -->
+<div id="toast" class="fixed bottom-6 right-6 z-50 bg-custom-surface border border-custom text-custom-main px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 opacity-0 translate-y-4 pointer-events-none text-sm"></div>
+
+<script>
+    // Função de Notificação Flutuante
+    function showToast(message: string) {
+        const toast = document.getElementById('toast');
+        if (!toast) return;
+        
+        toast.innerText = message;
+        
+        // Reset classes
+        toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        // Apply active state classes
+        toast.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        
+        setTimeout(() => {
+            // Restore hidden state
+            toast.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        }, 3000);
+    }
+
+    // Expose globally to window object for access across client-side scripts
+    (window as any).showToast = showToast;
+</script>

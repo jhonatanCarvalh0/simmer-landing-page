@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+.code-font {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Animação de Pulso de Calor (Simmering effect) */
+@keyframes simmer-glow {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(1.05);
+    }
+}
+.simmer-radial-glow {
+    animation: simmer-glow 8s infinite ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fade-in {
+    animation: fade-in 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Classes Customizadas de Tema */
+/* TEMA ESCURO (Billie Jean Pink) */
+.theme-dark {
+    --bg-color: #0B0F12;
+    --surface-color: #141A1F;
+    --surface-card: #1C242C;
+    --text-main: #F3F4F6;
+    --text-muted: #94A3B8;
+    --border-color: #24303C;
+    --accent-color: #FF007F;
+    --accent-hover: #E00070;
+    --accent-light: rgba(255, 0, 127, 0.1);
+    
+    /* Terminal e Estados (Dark) */
+    --terminal-bg: #05070A;
+    --terminal-border: #24303C;
+    --terminal-text: #F3F4F6;
+    --terminal-comment: #475569;
+    --step-inactive-bg: #141A1F;
+    --step-inactive-border: #24303C;
+    --step-inactive-text: #475569;
+    --success-text: #34D399;
+    --error-text: #F87171;
+    --warning-text: #FBBF24;
+    --info-text: #60A5FA;
+}
+
+/* TEMA CLARO (Billie Jean Carmesim) */
+.theme-light {
+    --bg-color: #F8FAFC;
+    --surface-color: #FFFFFF;
+    --surface-card: #F1F5F9;
+    --text-main: #0F172A;
+    --text-muted: #475569;
+    --border-color: #E2E8F0;
+    --accent-color: #E10050;
+    --accent-hover: #C0003C;
+    --accent-light: rgba(225, 0, 80, 0.1);
+    
+    /* Terminal e Estados (Light) */
+    --terminal-bg: #0F172A; /* Mantém o terminal escuro para contraste profissional premium */
+    --terminal-border: #1E293B;
+    --terminal-text: #F8FAFC;
+    --terminal-comment: #64748B;
+    --step-inactive-bg: #E2E8F0;
+    --step-inactive-border: #CBD5E1;
+    --step-inactive-text: #64748B;
+    --success-text: #10B981;
+    --error-text: #EF4444;
+    --warning-text: #F59E0B;
+    --info-text: #3B82F6;
+}
+
+.bg-custom-main { background-color: var(--bg-color); }
+.bg-custom-surface { background-color: var(--surface-color); }
+.bg-custom-card { background-color: var(--surface-card); }
+.text-custom-main { color: var(--text-main); }
+.text-custom-muted { color: var(--text-muted); }
+.border-custom { border-color: var(--border-color); }
+.bg-custom-accent { background-color: var(--accent-color); }
+.text-custom-accent { color: var(--accent-color); }
+.border-custom-accent { border-color: var(--accent-color); }
+.fill-custom-accent { fill: var(--accent-color); }
+
+/* Classes de Suporte Adaptáveis */
+.bg-terminal { background-color: var(--terminal-bg); }
+.border-terminal { border-color: var(--terminal-border); }
+.text-terminal { color: var(--terminal-text); }
+.text-terminal-comment { color: var(--terminal-comment); }
+.bg-step-inactive { background-color: var(--step-inactive-bg); }
+.border-step-inactive { border-color: var(--step-inactive-border); }
+.text-step-inactive { color: var(--step-inactive-text); }
+.text-success-custom { color: var(--success-text); }
+.text-error-custom { color: var(--error-text); }
+.text-warning-custom { color: var(--warning-text); }
+.text-info-custom { color: var(--info-text); }
+
+/* Transição suave para botões e interações */
+.transition-all-custom {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,244 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Toast from '../components/Toast.astro';
+---
+
+<Layout title="Sistemas & Custos | Simmer Systems">
+	<Navbar />
+	<main class="relative z-10 max-w-7xl mx-auto px-6 py-16 md:py-24">
+		<!-- Hero Section -->
+		<header class="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
+			<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-custom-accent/15 text-custom-accent border border-custom-accent/25 text-xs font-bold uppercase tracking-widest mb-6">
+				<span class="w-2 h-2 rounded-full bg-custom-accent animate-pulse"></span>
+				Transparência Absoluta
+			</div>
+			<h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none">
+				Lógica Imutável.<br class="hidden sm:inline">
+				<span class="text-custom-accent font-black">Custos Previsíveis.</span>
+			</h1>
+			<p class="mt-6 text-lg text-custom-muted leading-relaxed">
+				Nossos sistemas assentam sobre contratos operacionais estritos e processos matematicamente blindados. Conheça nossos modelos de licenciamento e escolha a maturidade que seu escritório exige.
+			</p>
+		</header>
+
+		<!-- Grid de Sistemas & Arquitetura -->
+		<section class="mb-24">
+			<div class="text-center mb-12">
+				<span class="text-xs font-black tracking-widest text-custom-accent uppercase">Mapeamento Técnico</span>
+				<h2 class="text-2xl md:text-3xl font-black tracking-tight mt-2">Nossa Arquitetura Operacional</h2>
+			</div>
+			
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+				<div class="p-6 md:p-8 rounded-3xl border border-custom bg-custom-surface flex flex-col justify-between hover:border-custom-accent/20 transition-all-custom">
+					<div>
+						<div class="text-xs code-font text-custom-accent mb-2">// CAPTURA & DADOS</div>
+						<h3 class="text-xl font-bold mb-3">Triagem com Assinatura LGPD</h3>
+						<p class="text-sm text-custom-muted leading-relaxed mb-4">
+							A entrada de novos clientes passa por um pipeline de integridade física. O sistema gera automaticamente termos de consentimento criptografados e impede qualquer trâmite operacional se houver pendências cadastrais.
+						</p>
+					</div>
+					<div class="text-xs code-font text-custom-muted bg-custom-main border border-custom p-3.5 rounded-xl">
+						<span class="text-success-custom">✔ IntegrityCheck:</span> active <br>
+						<span class="text-custom-accent">■ FileLock:</span> AES-256 enabled
+					</div>
+				</div>
+
+				<div class="p-6 md:p-8 rounded-3xl border border-custom bg-custom-surface flex flex-col justify-between hover:border-custom-accent/20 transition-all-custom">
+					<div>
+						<div class="text-xs code-font text-custom-accent mb-2">// INTEGRAÇÃO e-CAC</div>
+						<h3 class="text-xl font-bold mb-3">Automação de Credenciamento Fiscal</h3>
+						<p class="text-sm text-custom-muted leading-relaxed mb-4">
+							Consultas periódicas ao portal da Receita Federal estruturadas através de chaves seguras e procurações RFB. O robô Simmer monitora intimações do CARF e prazos de certidão negativa de forma contínua.
+						</p>
+					</div>
+					<div class="text-xs code-font text-custom-muted bg-custom-main border border-custom p-3.5 rounded-xl">
+						<span class="text-info-custom">ℹ ProxyConnection:</span> authenticated <br>
+						<span class="text-custom-accent">■ QueryInterval:</span> 4h (strict loop)
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Tabela / Cards de Custos & Planos -->
+		<section class="mb-24">
+			<div class="text-center mb-16">
+				<span class="text-xs font-black tracking-widest text-custom-accent uppercase">Módulos & Valores</span>
+				<h2 class="text-3xl md:text-4xl font-black tracking-tight mt-2">Escolha seu Nível de Maturação</h2>
+				<p class="text-custom-muted mt-3 text-sm max-w-2xl mx-auto">
+					Valores transparentes e proporcionais à volumetria operacional. Sem taxas surpresas, sem aditivos escondidos.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+				<!-- Plano 1 -->
+				<div class="p-8 rounded-3xl border border-custom bg-custom-surface/50 hover:border-custom-accent/30 hover:bg-custom-card/25 transition-all-custom flex flex-col justify-between">
+					<div>
+						<div class="text-xs font-black uppercase text-custom-muted tracking-wider mb-2">Operacional (Starter)</div>
+						<div class="text-3xl font-black mb-1">R$ 490<span class="text-sm font-normal text-custom-muted">/mês</span></div>
+						<p class="text-xs text-custom-muted mb-6">Ideal para boutiques jurídicas.</p>
+						<hr class="border-custom mb-6">
+						<ul class="space-y-3 text-sm text-custom-muted mb-8">
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Até 100 casos ativos</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Módulo CRM & Triagem</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Upload manual de contratos</span>
+							</li>
+							<li class="flex items-center gap-2.5 opacity-40">
+								<svg class="w-4 h-4 text-custom-muted flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+								<span>Sem sincronização e-CAC</span>
+							</li>
+						</ul>
+					</div>
+					<button id="btn-license-starter" class="w-full py-3 bg-custom-card border border-custom text-custom-main font-bold rounded-xl text-xs uppercase tracking-wider hover:bg-custom-main hover:border-custom-accent transition-all-custom cursor-pointer">
+						Contratar Licença
+					</button>
+				</div>
+
+				<!-- Plano 2 (Recomendado) -->
+				<div class="p-8 rounded-3xl border-2 border-custom-accent bg-custom-surface shadow-2xl relative flex flex-col justify-between hover:scale-[1.02] transition-all duration-300">
+					<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-custom-accent text-custom-main px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+						Recomendado
+					</div>
+					<div>
+						<div class="text-xs font-black uppercase text-custom-accent tracking-wider mb-2 mt-2">Bureau (Professional)</div>
+						<div class="text-4xl font-black mb-1 text-custom-main">R$ 1.290<span class="text-sm font-normal text-custom-muted">/mês</span></div>
+						<p class="text-xs text-custom-muted mb-6">Controle fiscal e prazos TRF1 automatizados.</p>
+						<hr class="border-custom mb-6">
+						<ul class="space-y-3 text-sm text-custom-main mb-8">
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Até 1.000 casos ativos</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Módulo e-CAC automatizado</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Atualização SELIC automática</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Suporte SLA de 4 horas</span>
+							</li>
+						</ul>
+					</div>
+					<button id="btn-license-bureau" class="w-full py-3.5 bg-custom-accent text-custom-main font-bold rounded-xl text-xs uppercase tracking-wider hover:opacity-90 transition-all-custom cursor-pointer shadow-lg shadow-pink-500/20">
+						Contratar Licença
+					</button>
+				</div>
+
+				<!-- Plano 3 -->
+				<div class="p-8 rounded-3xl border border-custom bg-custom-surface/50 hover:border-custom-accent/30 hover:bg-custom-card/25 transition-all-custom flex flex-col justify-between">
+					<div>
+						<div class="text-xs font-black uppercase text-custom-muted tracking-wider mb-2">Solid (Enterprise)</div>
+						<div class="text-3xl font-black mb-1">Sob Consulta</div>
+						<p class="text-xs text-custom-muted mb-6">Operações corporativas sob medida.</p>
+						<hr class="border-custom mb-6">
+						<ul class="space-y-3 text-sm text-custom-muted mb-8">
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Casos ativos ilimitados</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Instância Proxy e-CAC dedicada</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>Integração API CRM customizada</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<svg class="w-4 h-4 text-custom-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+								<span>SLA de 1 hora & Conta Dedicada</span>
+							</li>
+						</ul>
+					</div>
+					<a href="/#contato" class="w-full py-3 bg-custom-card border border-custom text-custom-main font-bold rounded-xl text-xs uppercase tracking-wider hover:bg-custom-main hover:border-custom-accent transition-all-custom cursor-pointer flex items-center justify-center">
+						Falar com Arquiteto
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- As Regras Rigorosas do Motor Simmer -->
+		<section class="p-8 md:p-12 rounded-3xl border border-custom bg-custom-surface/30 mb-16">
+			<div class="max-w-3xl mx-auto space-y-8">
+				<div class="text-center">
+					<span class="text-xs font-black tracking-widest text-custom-accent uppercase">Let it Simmer</span>
+					<h2 class="text-2xl md:text-3xl font-black tracking-tight mt-2">Nossas Três Regras Imutáveis</h2>
+					<p class="text-sm text-custom-muted mt-2">
+						A estabilidade operacional requer obediência a limites rígidos. Nós aplicamos isso em nível de banco de dados.
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<div class="flex gap-4 items-start">
+						<span class="w-6 h-6 rounded-full bg-custom-accent/10 border border-custom-accent/25 text-custom-accent flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</span>
+						<div>
+							<h4 class="font-bold text-lg">Inibição de Bypass de Processos</h4>
+							<p class="text-sm text-custom-muted mt-1 leading-relaxed">
+								Um caso jurídico não pode avançar para cálculos sem validação documental prévia e e-CAC ativo. Qualquer tentativa gera um log de auditoria e bloqueia a transição instantaneamente.
+							</p>
+						</div>
+					</div>
+
+					<div class="flex gap-4 items-start">
+						<span class="w-6 h-6 rounded-full bg-custom-accent/10 border border-custom-accent/25 text-custom-accent flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
+						<div>
+							<h4 class="font-bold text-lg">Atualização Tributária Indexada na Origem</h4>
+							<p class="text-sm text-custom-muted mt-1 leading-relaxed">
+								Não permitimos digitação manual de taxas SELIC ou índices inflacionários para liquidação de honorários. A leitura ocorre diretamente dos webservices do Bacen, garantindo conformidade matemática fiscal.
+							</p>
+						</div>
+					</div>
+
+					<div class="flex gap-4 items-start">
+						<span class="w-6 h-6 rounded-full bg-custom-accent/10 border border-custom-accent/25 text-custom-accent flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</span>
+						<div>
+							<h4 class="font-bold text-lg">Integridade de Dados e LGPD no Descarte</h4>
+							<p class="text-sm text-custom-muted mt-1 leading-relaxed">
+								Todo e qualquer documento coletado na triagem que não evolua para contrato assinado em 30 dias é sumariamente expurgado dos servidores por rotinas imutáveis de banco de dados.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer />
+	<Toast />
+</Layout>
+
+<script>
+    const setupPricingActions = () => {
+        const btnStarter = document.getElementById('btn-license-starter');
+        const btnBureau = document.getElementById('btn-license-bureau');
+
+        if (btnStarter) {
+            btnStarter.addEventListener('click', () => {
+                (window as any).showToast?.('Você selecionou o Plano Operacional. Redirecionando para contrato...');
+            });
+        }
+
+        if (btnBureau) {
+            btnBureau.addEventListener('click', () => {
+                (window as any).showToast?.('Você selecionou o Plano Bureau. Redirecionando para contrato...');
+            });
+        }
+    };
+
+    // Initialize listeners
+    setupPricingActions();
+    // Re-bind when swapping routes
+    document.addEventListener('astro:after-swap', setupPricingActions);
+</script>

@@ -1,0 +1,95 @@
+---
+---
+<nav class="sticky top-0 z-50 backdrop-blur-md bg-opacity-90 border-b border-custom bg-custom-main/80 transition-all-custom">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3 group">
+            <!-- Logotipo Vencedor: Os Três Pilares -->
+            <div class="w-10 h-10 flex items-center justify-center transition-all-custom group-hover:scale-105">
+                <svg class="w-full h-full text-custom-main" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="24" y="32" width="12" height="36" rx="3.5" fill="currentColor"/>
+                    <rect x="44" y="24" width="12" height="52" rx="3.5" class="fill-custom-accent"/>
+                    <rect x="64" y="32" width="12" height="36" rx="3.5" fill="currentColor"/>
+                </svg>
+            </div>
+            <div>
+                <span class="font-black tracking-tight text-lg block">SIMMER</span>
+                <span class="text-[9px] uppercase tracking-widest block -mt-1 opacity-70">Systems</span>
+            </div>
+        </a>
+
+        <!-- Links para Desktop -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+            <a href="/#filosofia" class="opacity-80 hover:opacity-100 transition-all-custom">A Filosofia</a>
+            <a href="/#axiom" class="opacity-80 hover:opacity-100 transition-all-custom">Módulo Axiom</a>
+            <a href="/#simulador" class="opacity-80 hover:opacity-100 transition-all-custom">O Simulador</a>
+            <a href="/systems" class="text-custom-accent font-bold hover:opacity-80 transition-all-custom">Sistemas & Custos</a>
+        </div>
+
+        <!-- Controles Externos -->
+        <div class="flex items-center gap-4">
+            <!-- Seletor de Tema Dinâmico -->
+            <button id="theme-toggle-btn" class="p-2 rounded-lg border border-custom hover:bg-custom-card transition-all-custom text-sm flex items-center gap-2 cursor-pointer" title="Alternar tema">
+                <svg id="theme-icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                </svg>
+                <svg id="theme-icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <span id="theme-text" class="text-xs font-bold hidden sm:inline">Tema Claro</span>
+            </button>
+            <a href="/systems" class="hidden sm:inline-block px-4 py-2 text-xs font-bold uppercase tracking-wider bg-custom-accent text-custom-main rounded hover:opacity-90 transition-all-custom">
+                Ver Portfólio
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const setupThemeToggle = () => {
+        const btn = document.getElementById('theme-toggle-btn');
+        const sunIcon = document.getElementById('theme-icon-sun');
+        const moonIcon = document.getElementById('theme-icon-moon');
+        const themeText = document.getElementById('theme-text');
+
+        if (!btn || !sunIcon || !moonIcon || !themeText) return;
+
+        const updateThemeUI = (theme: string) => {
+            if (theme === 'theme-light') {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                themeText.innerText = 'Tema Escuro';
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                themeText.innerText = 'Tema Claro';
+            }
+        };
+
+        // Sync UI state with active documentElement theme
+        let currentTheme = document.documentElement.className || 'theme-dark';
+        updateThemeUI(currentTheme);
+
+        // Toggle theme and update layout classes & localStorage
+        btn.addEventListener('click', () => {
+            currentTheme = document.documentElement.className;
+            let nextTheme = 'theme-dark';
+
+            if (currentTheme === 'theme-dark') {
+                nextTheme = 'theme-light';
+                (window as any).showToast?.('Tema Claro ativado!');
+            } else {
+                nextTheme = 'theme-dark';
+                (window as any).showToast?.('Tema Escuro ativado!');
+            }
+
+            document.documentElement.className = nextTheme;
+            localStorage.setItem('theme', nextTheme);
+            updateThemeUI(nextTheme);
+        });
+    };
+
+    // Initialize toggle listener
+    setupThemeToggle();
+    document.addEventListener('astro:after-swap', setupThemeToggle);
+</script>
