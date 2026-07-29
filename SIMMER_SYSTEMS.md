@@ -34,8 +34,11 @@ A Simmer Systems nasce em oposição direta à cultura do "ship rápido e corrij
 
 ---
 
-## Produto Principal: Módulo Axiom
+## Portfólio de Produtos Simmer Systems
 
+A Simmer Systems mantém uma esteira clara de maturidade tecnológica para seus sistemas:
+
+### 1. ⚡ Módulo Axiom *(Sucessor em Desenvolvimento)*
 O **Axiom** é o carro-chefe da Simmer Systems — um motor jurídico e administrativo projetado especificamente para **escritórios de advocacia tributária**.
 
 Integra em um único fluxo blindado:
@@ -44,26 +47,29 @@ Integra em um único fluxo blindado:
 - 📅 **Prazos do TRF1** — alertas antecipados para intimações fiscais do CARF
 - 💰 **Honorários automatizados** — controle de parcelas, precatórios e RPV com prestação de contas transparente
 
-### Os três estágios do fluxo Axiom:
-
-```
-[1. Entrada de Leads]
-   CRM & Triagem → Bloqueio automático se documentação LGPD ausente
-         ↓
-   Gatilho: Análise de Viabilidade
-
-[2. Habilitação Tributária]
-   e-CAC & Receita → Monitoramento de procurações e certificados
-         ↓
-   Gatilho: Auditoria de Crédito
-
-[3. Honorários Automatizados]
-   Financeiro & RPV → Cálculo dinâmico com SELIC + controle de precatórios
-         ↓
-   Gatilho: Encerramento com Êxito
-```
-
 🔗 **Acesse o Axiom:** [simmer-axiom.vercel.app](https://simmer-axiom.vercel.app/)
+
+---
+
+### 2. 📊 Pasep Reviewer *(Ativo)*
+O **Pasep Reviewer** é uma ferramenta ativa voltada para auditoria, apuração de discrepâncias e revisão de contas do **PASEP** para servidores públicos e trabalhadores.
+
+Destaques da plataforma:
+- 🔍 **Auditoria de extratos e contas** — identificação automática de inconsistências de repasses
+- 🧮 **Recálculos com índices oficiais** — atualização monetária e liquidação de valores devidos
+- 📄 **Relatórios prontos para petição** — exportação de demonstrativos auditados para instrução processual
+
+🔗 **Acesse o Pasep Reviewer:** [pasep-reviewer.vercel.app](https://pasep-reviewer.vercel.app/)
+
+---
+
+### 3. 🏛️ Veritas *(Predecessor Descontinuado)*
+O **Portal Veritas** foi a plataforma pioneira de consulta e organização jurídica preliminar desenvolvida pela Simmer. Serviu de fundação conceitual para a arquitetura de rigidez de estados e maturação que deu origem ao ecossistema atual.
+
+- 📜 **Papel Histórico:** Plataforma precursora do ecossistema Simmer
+- 🛑 **Status:** Descontinuado (substituído pela arquitetura do Módulo Axiom)
+
+🔗 **Acesse o Veritas (Legado):** [portal-veritas.vercel.app](https://portal-veritas.vercel.app/)
 
 ---
 
